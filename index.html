@@ -202,8 +202,8 @@ nav{
 @media(max-width:900px){.case-top{grid-template-columns:1fr;}}
 .case-lede p{color:var(--text-dim);font-size:15.5px;margin-bottom:16px;}
 .case-lede strong{color:var(--text);font-weight:600;}
-.metric-row{display:flex;gap:0;border:1px solid var(--line);margin-top:28px;}
-.metric{flex:1;padding:18px 20px;border-right:1px solid var(--line);}
+.metric-row{display:flex;gap:0;border:1px solid var(--line);margin-top:28px;flex-wrap:wrap;}
+.metric{flex:1;padding:18px 20px;border-right:1px solid var(--line);min-width:110px;}
 .metric:last-child{border-right:none;}
 .metric-val{font-family:var(--font-mono);font-size:22px;color:var(--cyan);font-weight:500;}
 .metric-lbl{font-family:var(--font-mono);font-size:10.5px;color:var(--text-faint);text-transform:uppercase;letter-spacing:.06em;margin-top:4px;}
@@ -251,6 +251,11 @@ nav{
 .tl-item li::before{
   content:'▸';position:absolute;left:0;color:var(--text-faint);font-size:12px;top:2px;
 }
+.tl-tech{
+  margin-top:14px;font-family:var(--font-mono);font-size:11px;color:var(--text-faint);
+  letter-spacing:.02em;
+}
+.tl-tech b{color:var(--text-dim);font-weight:500;}
 
 /* ---------- skills ---------- */
 .skills-grid{
@@ -313,13 +318,13 @@ footer{padding:100px 0 60px;border-top:1px solid var(--line);}
     <div class="reveal in">
       <div class="eyebrow">Full-Stack &amp; AI Product Engineer — Remote, India</div>
       <h1 class="hero-name">Subham<br>Dixit<span class="accent">.</span></h1>
-      <p class="hero-desc">Three years shipping production web apps in <b>TypeScript, React, Next.js &amp; Node</b>. Right now, building and scoring AI models under the hood of <b>ReelAutopsy</b> — a live SaaS I designed, built, and launched solo, from schema to sign-up.</p>
+      <p class="hero-desc">Four plus years turning ambiguous requirements into production <b>TypeScript, React, Next.js &amp; Node</b> systems. Right now, building and scoring AI models under the hood of <b>ReelAutopsy</b> — a live SaaS I designed, built, and launched solo, from schema to sign-up, at a scope usually split across a 3–4 person team.</p>
       <div class="hero-cta">
         <a class="btn solid" href="https://reelautopsy.com" target="_blank" rel="noopener">View ReelAutopsy →</a>
         <a class="btn" href="#contact">Get in touch</a>
       </div>
       <div class="hero-meta">
-        <div><strong>3+ yrs</strong> in production</div>
+        <div><strong>4+ yrs</strong> in production</div>
         <div><strong>6</strong> engineering roles</div>
         <div><strong>1</strong> solo SaaS, live</div>
         <div><strong>4★</strong> CodeChef, top 2%</div>
@@ -345,11 +350,12 @@ footer{padding:100px 0 60px;border-top:1px solid var(--line);}
     <div class="case-top">
       <div class="case-lede reveal">
         <p>An <strong>AI-powered Instagram Reels script analyzer</strong>, built end-to-end as a solo founder — architecture, backend, billing, and go-to-market. Creators paste a script and get back a structured diagnostic: what's working, what's costing them the scroll, and why.</p>
-        <p>Every score is generated through a <strong>schema-validated pipeline</strong> rather than free-text AI output, so results stay consistent and structured across thousands of scripts — the same rigor Subham brought to evaluating LLM response pairs as an AI Trainer.</p>
+        <p>Every score is generated through a <strong>schema-validated pipeline</strong> rather than free-text AI output, so results stay consistent and structured across thousands of scripts — the same rigor Subham brought to evaluating LLM response pairs as an AI Trainer. Grew to <strong>50 signups through 100% organic acquisition</strong> (Reddit, zero ad spend), with zero-downtime deploys and no reported outages since launch.</p>
         <div class="metric-row">
-          <div class="metric"><div class="metric-val">Jan 2026</div><div class="metric-lbl">Launched</div></div>
+          <div class="metric"><div class="metric-val">~4.5s</div><div class="metric-lbl">Avg. scoring response</div></div>
+          <div class="metric"><div class="metric-val">95%+</div><div class="metric-lbl">Schema validation rate</div></div>
+          <div class="metric"><div class="metric-val">50</div><div class="metric-lbl">Organic signups</div></div>
           <div class="metric"><div class="metric-val">Solo</div><div class="metric-lbl">Built &amp; shipped by</div></div>
-          <div class="metric"><div class="metric-val">US/UK</div><div class="metric-lbl">GTM target</div></div>
         </div>
       </div>
 
@@ -358,7 +364,7 @@ footer{padding:100px 0 60px;border-top:1px solid var(--line);}
         <div class="pipeline-title">Production Stack</div>
         <div class="pipe-row">
           <span class="pipe-node">Next.js App Router</span><span class="pipe-arrow">→</span>
-          <span class="pipe-node key">Gemini 2.5 Flash</span><span class="pipe-arrow">→</span>
+          <span class="pipe-node key">Gemini API</span><span class="pipe-arrow">→</span>
           <span class="pipe-node key">Zod validation</span>
         </div>
         <div class="pipe-row" style="margin-top:10px;">
@@ -367,7 +373,11 @@ footer{padding:100px 0 60px;border-top:1px solid var(--line);}
           <span class="pipe-node">Upstash Redis</span>
         </div>
         <div class="pipe-row" style="margin-top:10px;">
-          <span class="pipe-node">Razorpay billing</span><span class="pipe-arrow">→</span>
+          <span class="pipe-node">Google OAuth</span><span class="pipe-arrow">→</span>
+          <span class="pipe-node">Resend</span><span class="pipe-arrow">→</span>
+          <span class="pipe-node">Razorpay billing</span>
+        </div>
+        <div class="pipe-row" style="margin-top:10px;">
           <span class="pipe-node">HMAC webhooks</span><span class="pipe-arrow">→</span>
           <span class="pipe-node">Vercel CI/CD</span>
         </div>
@@ -407,10 +417,12 @@ footer{padding:100px 0 60px;border-top:1px solid var(--line);}
           <div class="tl-role">Founder &amp; Full-Stack Developer</div>
           <div class="tl-org">ReelAutopsy · Remote</div>
           <ul>
-            <li>Designed, built, and launched a live AI-powered SaaS solo, now converting real signups to paid.</li>
-            <li>Architected an 8-dimension AI scoring pipeline with schema-validated, structured output.</li>
-            <li>Engineered the full stack — billing, auth, webhooks, CI/CD — and drove content-led GTM for US/UK creators.</li>
+            <li>Architected an AI scoring pipeline (Gemini API + Zod schema validation) rating scripts across 8 dimensions — hook strength, scroll risk, CTA effectiveness, pacing — with ~4.5s average response time and 95%+ successful schema validation across production API calls.</li>
+            <li>Designed and shipped a production-grade SaaS solo — architecture, authentication, billing, and deployment — a scope typically split across a 3–4 person team, using Next.js App Router, Prisma ORM, PostgreSQL (Neon), Razorpay payment integration, Upstash Redis async job queues, Resend, Google OAuth, and HMAC-verified webhooks.</li>
+            <li>Grew ReelAutopsy to 50 signups through 100% organic acquisition — Reddit community engagement, zero ad spend — validating early product-market signal pre-funding.</li>
+            <li>Owns the complete product lifecycle from architecture to deployment (Vercel CI/CD), with zero-downtime deploys and no reported outages since launch.</li>
           </ul>
+          <div class="tl-tech"><b>Stack:</b> Next.js, React, TypeScript, Gemini API, Zod, Prisma, Neon Postgres, Razorpay, Upstash Redis, Resend, Google OAuth, Vercel</div>
         </div>
       </div>
 
@@ -420,8 +432,8 @@ footer{padding:100px 0 60px;border-top:1px solid var(--line);}
           <div class="tl-role">AI Trainer</div>
           <div class="tl-org">Soul AI · Remote</div>
           <ul>
-            <li>Judged pairs of LLM responses on correctness, clarity, and helpfulness with written rationale.</li>
-            <li>Identified failure modes in model outputs and proposed concrete prompt/response fixes.</li>
+            <li>Evaluated pairs of LLM responses on correctness, clarity, and helpfulness, authoring structured rationale across 100+ evaluations to support model improvement workflows.</li>
+            <li>Identified failure modes and edge cases in model outputs, proposing prompt-engineering fixes that reduced error rates in follow-up evaluation rounds.</li>
             <li>This evaluation discipline directly shaped the design of ReelAutopsy's own scoring pipeline.</li>
           </ul>
         </div>
@@ -433,11 +445,12 @@ footer{padding:100px 0 60px;border-top:1px solid var(--line);}
           <div class="tl-role">Software Developer</div>
           <div class="tl-org">Virtuelly Inc. · Remote</div>
           <ul>
-            <li>Built an AI Photobooth solo on AWS Lambda + Replicate — async serverless pipeline, +30% event engagement.</li>
-            <li>Built a real-time multiplayer White Elephant game (React + Firebase) across 50+ live events, 200+ concurrent players.</li>
-            <li>Cut enterprise event page load from ~10s to ~1.4s (86% faster) via input-driven pricing logic.</li>
+            <li>Built an AI Photobooth solo on Node.js (AWS Lambda) and the Replicate API, architecting an async serverless pipeline for concurrent styled-avatar generation; boosted post-event engagement by 30%.</li>
+            <li>Delivered a real-time multiplayer game from scratch in React and Firebase, deployed across 50+ corporate events supporting 200+ concurrent players.</li>
+            <li>Reduced enterprise event page load time from ~10s to ~1.4s (86% improvement) by replacing pre-rendered pricing combinations with input-driven logic.</li>
             <li>Designed secure APIs for session moderation, scoring, and event analytics.</li>
           </ul>
+          <div class="tl-tech"><b>Stack:</b> Node.js, AWS Lambda, Replicate API, React, Firebase</div>
         </div>
       </div>
 
@@ -447,7 +460,7 @@ footer{padding:100px 0 60px;border-top:1px solid var(--line);}
           <div class="tl-role">AI Trainer (Freelance)</div>
           <div class="tl-org">Remotasks</div>
           <ul>
-            <li>Evaluated and ranked AI-generated response pairs, flagging edge-case failures to support model improvement.</li>
+            <li>Assessed and ranked AI-generated response pairs against quality criteria, flagging errors and edge-case failures to support iterative model improvement.</li>
           </ul>
         </div>
       </div>
@@ -458,8 +471,8 @@ footer{padding:100px 0 60px;border-top:1px solid var(--line);}
           <div class="tl-role">Software Engineer</div>
           <div class="tl-org">Procurenet · Remote</div>
           <ul>
-            <li>Added Hindi-language support to an LLM content pipeline by designing and tuning a new prompt.</li>
-            <li>Implemented Zilliz Vector DB for similarity-based clustering to boost content discoverability.</li>
+            <li>Extended an LLM content-generation pipeline with Hindi-language support via a new prompt producing structured Hindi articles alongside the existing English flow.</li>
+            <li>Enhanced content discoverability by integrating Zilliz Vector DB for similarity-based clustering and semantic retrieval across the article corpus.</li>
             <li>Built a keyword-based duplicate-content check that runs at publish time.</li>
           </ul>
         </div>
@@ -471,8 +484,8 @@ footer{padding:100px 0 60px;border-top:1px solid var(--line);}
           <div class="tl-role">Software Engineer</div>
           <div class="tl-org">Virtuelly Inc. · Remote</div>
           <ul>
-            <li>Joined as a junior engineer on a 7-person team building enterprise virtual event platforms serving thousands of concurrent users.</li>
-            <li>Owned scoring logic for a real-time event platform (Node.js, Socket.io) and designed its REST APIs.</li>
+            <li>Joined as a junior engineer on a 7-person team building enterprise virtual event platforms (Node.js, React, AWS) serving thousands of concurrent users.</li>
+            <li>Owned scoring logic and built REST APIs with Socket.io powering large-scale virtual events, handling thousands of users with low latency.</li>
           </ul>
         </div>
       </div>
@@ -503,8 +516,10 @@ footer{padding:100px 0 60px;border-top:1px solid var(--line);}
         <div class="skill-cat">Backend &amp; APIs</div>
         <div class="skill-tags">
           <span class="skill-tag">Node.js</span><span class="skill-tag">REST API Design</span>
-          <span class="skill-tag">Prisma</span><span class="skill-tag">Python (Flask)</span>
-          <span class="skill-tag">AWS Lambda</span>
+          <span class="skill-tag">Auth (OAuth)</span><span class="skill-tag">Prisma</span>
+          <span class="skill-tag">Python (Flask)</span><span class="skill-tag">Serverless</span>
+          <span class="skill-tag">AWS Lambda</span><span class="skill-tag">Async Job Queues</span>
+          <span class="skill-tag">Webhooks</span><span class="skill-tag">3rd-Party API Integrations</span>
         </div>
       </div>
       <div class="skill-panel">
@@ -518,23 +533,25 @@ footer{padding:100px 0 60px;border-top:1px solid var(--line);}
       <div class="skill-panel">
         <div class="skill-cat">Cloud &amp; DevOps</div>
         <div class="skill-tags">
-          <span class="skill-tag">AWS (Lambda, S3, ECR)</span><span class="skill-tag">Vercel</span>
-          <span class="skill-tag">Docker</span><span class="skill-tag">CI/CD</span>
+          <span class="skill-tag">AWS (Lambda, S3, ECR, CodeBuild)</span><span class="skill-tag">Vercel</span>
+          <span class="skill-tag">Docker</span><span class="skill-tag">CI/CD</span><span class="skill-tag">Git/GitHub</span>
         </div>
       </div>
       <div class="skill-panel">
-        <div class="skill-cat">AI &amp; Libraries</div>
+        <div class="skill-cat">AI &amp; LLM Products</div>
         <div class="skill-tags">
           <span class="skill-tag">Gemini API</span><span class="skill-tag">OpenAI</span>
           <span class="skill-tag">LangChain</span><span class="skill-tag">Replicate</span>
-          <span class="skill-tag">Zod</span>
+          <span class="skill-tag">Zod</span><span class="skill-tag">Socket.io</span>
+          <span class="skill-tag">Firebase</span>
         </div>
       </div>
       <div class="skill-panel">
-        <div class="skill-cat">Realtime &amp; Tooling</div>
+        <div class="skill-cat">AI Dev Tools</div>
         <div class="skill-tags">
-          <span class="skill-tag">Socket.io</span><span class="skill-tag">Firebase</span>
-          <span class="skill-tag">Git</span>
+          <span class="skill-tag">Claude Code</span><span class="skill-tag">Cursor</span>
+          <span class="skill-tag">Postman</span><span class="skill-tag">Slack</span>
+          <span class="skill-tag">Vercel Observability</span><span class="skill-tag">UptimeRobot</span>
         </div>
       </div>
     </div>
